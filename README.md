@@ -15,7 +15,7 @@ Connect Claude to your Monarch Money account for AI-powered financial analysis a
 
    - In Monarch Money, go to **Settings → Security → Enable MFA** (or **Disable MFA** then re-enable it to reveal the secret again).
    - When the QR code appears, click **"Can't scan the code?"** (or similar) to reveal the **Two-factor text code**.
-   - Copy that string — it's ~32 characters of base32 (A–Z and 2–7), e.g. `JBSWY3DPEHPK3PXPABCDEFGHIJKLMNOP`. That's your `MONARCH_MFA_SECRET`.
+   - Copy that string — it's ~32 characters of base32 (A–Z and 2–7), e.g. `JBSW......MNOP`. That's your `MONARCH_MFA_SECRET`.
    - Finish enrollment in your authenticator app as usual (Authy, 1Password, Google Authenticator, etc.) so you still have a working 2FA setup.
 
    > Keep this secret private — anyone with it can generate valid 2FA codes for your account.
