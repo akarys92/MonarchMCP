@@ -9,7 +9,16 @@ Connect Claude to your Monarch Money account for AI-powered financial analysis a
    pip install -r requirements.txt
    ```
 
-2. **Get your MFA secret** from Monarch Money Settings → Security → Enable MFA
+2. **Get your MFA secret** (one-time setup):
+
+   The MCP server logs in non-interactively, so it needs your TOTP secret — the base32 string an authenticator app uses to generate 6-digit codes. This is **not** a 6-digit code itself.
+
+   - In Monarch Money, go to **Settings → Security → Enable MFA** (or **Disable MFA** then re-enable it to reveal the secret again).
+   - When the QR code appears, click **"Can't scan the code?"** (or similar) to reveal the **Two-factor text code**.
+   - Copy that string — it's ~32 characters of base32 (A–Z and 2–7), e.g. `JBSWY3DPEHPK3PXPABCDEFGHIJKLMNOP`. That's your `MONARCH_MFA_SECRET`.
+   - Finish enrollment in your authenticator app as usual (Authy, 1Password, Google Authenticator, etc.) so you still have a working 2FA setup.
+
+   > Keep this secret private — anyone with it can generate valid 2FA codes for your account.
 
 3. **Configure Claude Desktop** (`~/Library/Application Support/Claude/claude_desktop_config.json`):
    ```json
@@ -128,7 +137,7 @@ What's my credit score history?
 
 **Rate Limited**: Wait 5-10 minutes before retrying.
 
-**MFA Required**: Ensure `MONARCH_MFA_SECRET` is the base32 TOTP secret (not a 6-digit code).
+**MFA Required**: `MONARCH_MFA_SECRET` must be the base32 TOTP secret (the "Two-factor text code" shown during MFA setup), not the 6-digit code your authenticator app generates. If you've already enrolled and can't see the secret anymore, disable and re-enable MFA in Monarch to reveal it again.
 
 **Check Logs**:
 ```bash
