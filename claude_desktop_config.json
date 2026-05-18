@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "monarchmoney": {
+      "command": "/absolute/path/to/MonarchMCP/.venv/bin/python",
+      "args": ["/absolute/path/to/MonarchMCP/mcp_server_mvp.py"]
+    }
+  }
+}
